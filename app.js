@@ -17,7 +17,7 @@ app.use(methodOverride('_method')) // tells it that we want to use a query strin
 app.set('view engine', 'ejs');
 
 // Mongo URI
-const mongoURI = 'mongodb+srv://Tucker:Tucker@cluster0-tihhu.mongodb.net/test?retryWrites=true'
+const mongoURI = 'mongodb+srv://Tucker:Tucker@cluster0-tihhu.mongodb.net/ReactApp?retryWrites=true'
 
 // Create mongo connection
 const conn = mongoose.createConnection(mongoURI)
