@@ -55,8 +55,21 @@ const upload = multer({ storage }) //acts as the middleware for index.ejs
 // @route GET /
 // @desc Loads form
 app.get('/', (req, res) => {
-  res.render('index')
-})
+  gfs.files.find().toArray((err, files) => {
+    // check to see if files exist
+    if(!files || files.length === 0){
+      res.render('index', {files: false})  
+    } else {
+      files.map(file => {
+        if(file.contentType === 'image/jpeg' || file.contentType === 'image/png') {
+          file.isImage = true;
+        } else {
+          file.isImage = false;
+        }
+      })
+      res.render('index', {files: files})  
+    }
+  })})
 
 // @route POST /upload
 // @desc Uploads file to DB
