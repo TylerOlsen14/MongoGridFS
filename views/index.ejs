@@ -33,6 +33,11 @@
               <% } else {%> 
                 <%= file.filename %>
               <% } %>
+              <form method="POST" action="/files/<%= file._id %>?_method=DELETE">
+                <button class="btn btn-danger btn-block mt-4">
+                  Delete
+                </button>
+              </form>
             </div>
           <% }) %>
           <% } else { %>
